@@ -19,6 +19,6 @@
     "gulp-inline-source": "^2.1.0"
   },
   "scripts": {
-    "build": "gulp run minify copy"
+    "build": "gulp minify copy"
   }
 }
