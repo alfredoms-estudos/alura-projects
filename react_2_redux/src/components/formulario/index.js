@@ -1,13 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import M from 'materialize-css';
 import { bindActionCreators } from 'redux';
 
 import { adicionaAutor } from '../../actions/autoresActions';
 import getErrorMessage from './functions/form-check';
 
-const Formulario = (props) => {
-
+const Formulario = () => {
+    const dispatch = useDispatch();
+ 
     const [nome, setNome] = React.useState('');
     const [preco, setPreco] = React.useState('');
     const [livro, setLivro] = React.useState('');
@@ -20,7 +21,7 @@ const Formulario = (props) => {
         ];
         const errorMessage = getErrorMessage(validationData);
         if (errorMessage === null) {
-            props.adicionaAutor({ nome, preco, livro });
+            dispatch(adicionaAutor({ nome, preco, livro }));
             setNome('');
             setPreco('');
             setLivro('');
@@ -51,8 +52,4 @@ const Formulario = (props) => {
     );
 };
 
-const mapDispatchActions = (dispatch) => {
-    return bindActionCreators({adicionaAutor}, dispatch);
-};
-
-export default connect(null, mapDispatchActions)(Formulario);
+export default Formulario;
