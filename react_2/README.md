@@ -14,3 +14,16 @@ ReactDOM.render(
     document.getElementById('root')
 );
 ```
+
+- Caso se queira usar **interceptors** nas requisições, pode realizar da seguinte forma, utilizando a library **axios** para requisições: 
+
+```javascript
+
+import axios from 'axios';
+
+axios.interceptors.response.use(
+    (value) => value,
+    (error) => error,
+);
+
+```
