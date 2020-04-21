@@ -6,14 +6,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
+    "axios": "0.19.2",
     "materialize-css": "1.0.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-router-dom": "5.1.2",
     "react-scripts": "3.4.1",
     "validator": "13.0.0"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "concurrently 'react-scripts start' 'node ./api/server.js'",
+    "start:frontend": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -32,5 +35,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "concurrently": "5.1.0",
+    "cors": "^2.8.5",
+    "express": "4.16.4",
+    "md5": "^2.2.1",
+    "sqlite3": "4.1.1"
   }
 }

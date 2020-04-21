@@ -1,56 +1,52 @@
 import React from 'react';
-
-import './App.css';
 import 'materialize-css/dist/css/materialize.min.css';
 
-import Autores from './components/Autores';
-import Formulario from './components/Formulario';
-import Header from './components/Header';
+import './App.css';
+import Autores from './components/autores';
+import Formulario from './components/formulario';
+import Header from './components/header';
+import { MessageBox } from './components/shared/functions';
 
-const lista = [
-  {
-    nome: 'Paulo',
-    livro: 'React',
-    preco: '1000'
-  },
-  {
-    nome: 'Daniel',
-    livro: 'Java',
-    preco: '99'
-  },
-  {
-    nome: 'Marcos',
-    livro: 'Design',
-    preco: '150'
-  }
-  ,  {
-    nome: 'Bruno',
-    livro: 'DevOps',
-    preco: '100'
-  }
-];
+import { AutoresService } from './services';
 
 class App extends React.Component {
-  removeAutor = (id) => {
-    const { lista } = this.state;
-    
-    this.setState(
-      {
-        lista: lista.filter((autor, index) => {
-          return index!==id;
-        }),
+  state = { lista: [] };
+
+  componentDidMount() {
+    AutoresService
+      .listaAutores()
+      .then((autores) => {
+        this.setState({ lista: autores });
+      })
+      .catch((error) => {
+        if (error.response) {
+          MessageBox.sendMessage('Erro ao tentar listar Autor.', MessageBox.types.ERROR);
+        }
       }
     );
   }
 
-  adicionaAutor = (autor) => {
-    this.setState({
-      lista: [...this.state.lista, autor],
+  removeAutor = (id) => AutoresService.removeAutor(id)
+    .then((result) => {
+      const { lista } = this.state;
+      return this.setState({ 
+        lista: lista.filter((autor) => {
+          return autor.id !== id;
+        })
+      });
+    })
+    .catch((error) => {
+      if (error.response) {
+        MessageBox.sendMessage('Erro ao tentar remover Autor.', MessageBox.types.ERROR);
+      }
     });
-  }
-
-  state = { lista };
-
+    
+  adicionaAutor = (autor) => AutoresService.criaAutor(JSON.stringify(autor))
+    .then((autorCadastrado) => this.setState({
+        lista: [...this.state.lista, autorCadastrado],
+      }),
+    );
+  
   render () {
     return (
       <React.Fragment>

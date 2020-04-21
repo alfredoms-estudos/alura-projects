@@ -1,6 +1,5 @@
 import React from 'react';
-import TableHead from './functions/TableHead';
-import TableBody from './functions/TableBody';
+import { TableHead, TableBody } from './presentation';
 
 class Autores extends React.Component {
 

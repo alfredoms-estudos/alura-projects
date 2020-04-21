@@ -10,6 +10,7 @@ import Formulario from './components/formulario';
 import Header from './components/header';
 import { carregaListaAutores } from '../src/actions/autoresActions';
 import listaAutores from './mock-data/lista-autores';
+import { appContext } from './store';
 
 class App extends React.Component {
 
@@ -35,4 +36,4 @@ const mapDispatchActions = (dispatch) => {
   return bindActionCreators({ carregaListaAutores }, dispatch);
 }
 
-export default connect(null, mapDispatchActions)(App);
+export default connect(null, mapDispatchActions, null, { context: appContext })(App);

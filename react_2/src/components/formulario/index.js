@@ -1,7 +1,8 @@
 import React from 'react';
-import M from 'materialize-css';
 
 import getErrorMessage from './functions/form-check';
+import { MessageBox } from '../shared/functions';
+import { ErrorHandling } from '../shared/functions'
 
 const Formulario = (props) => {
 
@@ -17,13 +18,21 @@ const Formulario = (props) => {
         ];
         const errorMessage = getErrorMessage(validationData);
         if (errorMessage === null) {
-            props.adicionaAutor({ nome, preco, livro });
-            setNome('');
-            setPreco('');
-            setLivro('');
-            M.toast({html: 'Autor cadastrado com sucesso!', classes: 'green', displayLength: 2000});
+            props.adicionaAutor({ nome, preco, livro })
+                .then(
+                    () => {
+                        setNome('');
+                        setPreco('');
+                        setLivro('');
+                        MessageBox.sendMessage('Autor cadastrado com sucesso!', MessageBox.types.SUCCESS);
+                    },
+                ).catch((error) => {
+                    if (error.response) {
+                        MessageBox.sendMessage(`Erro ao tentar cadastrar Autor: ${ErrorHandling.getErrorFromList(error.response)}`, MessageBox.types.ERROR);
+                    }
+                });
         } else {
-            M.toast({html: errorMessage, classes: 'red', displayLength: 2000});
+            MessageBox.sendMessage(errorMessage, MessageBox.types.ERROR);
         }
     }
 

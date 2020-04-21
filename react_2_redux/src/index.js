@@ -5,12 +5,13 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store from './store';
+import { store, appContext }  from './store';
 
+React.createContext()
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={store}>
+    <Provider context={appContext} store={store}>
       <App />
     </Provider>
   </React.StrictMode>,

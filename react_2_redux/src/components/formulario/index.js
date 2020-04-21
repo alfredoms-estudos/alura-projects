@@ -1,7 +1,6 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from '../../store';
 import M from 'materialize-css';
-import { bindActionCreators } from 'redux';
 
 import { adicionaAutor } from '../../actions/autoresActions';
 import getErrorMessage from './functions/form-check';
