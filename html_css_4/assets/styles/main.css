@@ -62,12 +62,14 @@ main p {
 
 .imagem-beneficios {
 	width: 60%;
+	box-shadow: 10px 10px 10px black;
 }
 
 .utensilios {
 	width: 120px;
 	float: left;
 	margin: 0 20px 20px 0;
+	box-shadow: 10px 10px 10px black;
 }
 
 .mapa {
@@ -95,3 +97,12 @@ main p {
 	margin: 2em auto;
 }
 
+@media screen and (max-width: 480px) {
+    .principal, .conteudo-beneficios, .mapa-conteudo, .video {
+        width: auto;
+	}
+	
+	.lista-beneficios, .imagem-beneficios {
+		width: 100%;
+	}
+}

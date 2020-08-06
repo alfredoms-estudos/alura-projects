@@ -66,3 +66,93 @@ Também, na primeira propriedade, pode-se colocar a inclinação do gradiente, e
     }
 ```
 
+- seletor `>`: os estilos serão aplicados apenas em elementos filhos diretos do elemento indicado antes do sinal de maior, em elementos indicados após o sinal. Por exemplo, para aplicar um estilo em todos os elementos `p` filhos de `main`:
+
+```css
+    main > p {
+        font-weight: bold;
+    }
+```
+
+- seletor `+`: os estilos serão aplicados apenas no elemento indicado após o seletor de `+` e que é diretamente precedido por um elemento indicado antes do seletor de `+`, como no exemplo a seguir:
+
+```css
+    /* estilo aplicado em elementos <p> diretamente precedidos por <h1> */
+    h1 + p {
+        font-weight: bold;
+    }
+```
+
+- seletor `~`: os estilos serão aplicados em todos os elementos indicados após o selector de `~` que vierem após o elemento indicado antes desse seletor, sendo necessário que estejam no mesmo nível (isso é, que sejam irmãos):
+
+```css
+    /* o estilo será aplicado em todos os elementos do tipo <p> que sejam precedidos de um elemento <h1> */
+    h1 ~ p {
+        font-weight: bold;
+    }
+```
+
+- `not()`: *pseudo-elemento* usado para indicar a aplicação de um estilo em todos os elementos que não incluem um determinado identificador. Exemplo:
+
+```css
+    /* aplica o estilo em todos os elementos <p> que não tenham a classe .exemplo */
+    p:not(.exemplo) {
+        font-weight: bold;
+    }
+```
+- `calc()`: calcula um valor, e pode ser utilizado para medidas mais precisas:
+
+```css
+    .classe-exemplo {
+        width: calc(50% - 100px);
+    }
+```
+
+- `opacity`: define a opacidade do elemento - isso é, o quanto ele é *"transparente"*. Deve ser um número entre **0** e **1**, onde **0** é invisível, e **1** é completamente visível;
+
+- `rgba()`: define uma cor por meio do padrão `RGB` e a opacidade dessa cor - no caso, o último parâmetro;
+
+- `box-shadow`: cria uma sombra em um elemento. Entre seus parâmetros, temos:
+    - a palavra chave `inset`, que se especificada, define uma sombra interna;
+    - <offset-x> e <offset-y> - isso é, a posição inicial **x** e **y** a partir do elemento onde a sombra será desenhada. Caso a sombra seja interna, esses valor devem ser 0, pois nesse caso, a sombra não será deslocável; 
+    - <blur-radius> - o tamanho do efeito de desfocagem;
+    - <spread-radius> - quanto maior o valor, mais a sombra se expandirá;
+    - <color> - a cor da sombra;
+
+    (mais em https://developer.mozilla.org/pt-BR/docs/Web/CSS/box-shadow)
+
+```css
+    .elemento{
+    	box-shadow: 10px 10px 30px black;
+    }
+```
+
+- `text-shadow`: adiciona sombra a um texto. Entre seus parâmetros iniciais, temos:
+    - <cor> - a cor do elemento;
+    - <offset-x> e <offset-y> - a posição inicial **x** e **y** a partir do elemento onde a sombra será desenhada. Caso a sombra seja interna, esses valor devem ser 0, pois nesse caso, a sombra não será deslocável;
+    - <blur-radius> - o tamanho do efeito de desfocagem.
+
+    ( mais em https://developer.mozilla.org/pt-BR/docs/Web/CSS/text-shadow)
+
+- meta `viewport`: uma **meta tag** que possibilita setar, por meio da propriedade content, o tamanho de layout da tela:
+
+```html
+	<meta name="viewport" content="width=device-width">
+```
+
+    (mais em https://developer.mozilla.org/pt-BR/docs/Mozilla/Mobile/Viewport_meta_tag)
+
+- **media queries** (`@media`): consiste em uma função no `CSS` que, a partir de uma validação (chamada de `media type`), caso obtenha um valor verdadeiro, faz um estilização condicional:
+
+```css
+    /* aplica um estilo em .elemento quando a tela tiver um tamanho de até 600px */
+    @media (max-width: 600px) {
+        .elemento {
+            width: 10px;
+        }
+    } 
+
+```
+
+    (mais em https://developer.mozilla.org/pt-BR/docs/Web/Guide/CSS/CSS_Media_queries)
+
