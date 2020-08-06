@@ -132,7 +132,7 @@ Também, na primeira propriedade, pode-se colocar a inclinação do gradiente, e
     - <offset-x> e <offset-y> - a posição inicial **x** e **y** a partir do elemento onde a sombra será desenhada. Caso a sombra seja interna, esses valor devem ser 0, pois nesse caso, a sombra não será deslocável;
     - <blur-radius> - o tamanho do efeito de desfocagem.
 
-    ( mais em https://developer.mozilla.org/pt-BR/docs/Web/CSS/text-shadow)
+    (mais em https://developer.mozilla.org/pt-BR/docs/Web/CSS/text-shadow)
 
 - meta `viewport`: uma **meta tag** que possibilita setar, por meio da propriedade content, o tamanho de layout da tela:
 
