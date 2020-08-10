@@ -42,3 +42,16 @@
     font-weight: bold;
     margin-top: 10px;
 }
+
+@media screen and (max-width: 480px) {
+    .produtos {
+        width: 85%;
+        padding: 0;
+    }
+    
+    .produtos li {
+        margin: 20px 0;
+        display: block;
+        width: 100%;
+    }
+}

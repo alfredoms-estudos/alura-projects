@@ -56,3 +56,36 @@ td, th {
     border: 1px solid #000000;
     padding: 8px 15px;
 }
+
+select {
+    padding: 8px 25px;
+    font-size: larger;
+}
+
+fieldset {
+    margin-top: 15px;
+}
+
+@media screen and (max-width: 480px) {
+    main {
+        width: 100%;
+    }
+
+    form {
+        margin: 40px 40px; 
+    }
+
+    .enviar, .input-padrao, .checkbox, select {
+        width: calc(100%);
+    }
+
+    table {
+        margin: 0 40px 20px 40px;
+        width: calc(100% - 80px);
+    }
+
+    .input-padrao {
+        box-sizing: border-box;
+        margin: 0 0 10px;
+    }
+}
