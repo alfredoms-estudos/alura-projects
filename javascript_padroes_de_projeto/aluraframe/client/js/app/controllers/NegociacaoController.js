@@ -10,20 +10,16 @@ class NegociacaoController {
     adiciona(event) {
         event.preventDefault();
 
-        const convertedData = new Date(
-            ...this._data.value
-                .split('-')
-                .map((item, index) => index == 1 ? item - 1 : item)
-        );
-
-
+        const convertedData = DateHelper.textoParaData(this._data.value);
         const negociacao = new Negociacao(
             convertedData,
             this._quantidade.value,
             this._valor.value
         );
-        console.log(negociacao);
         this.limpaCampos();
+
+        console.log(negociacao);
+        console.log(DateHelper.dataParaTexto(negociacao.data));
 
         return negociacao;
     }
